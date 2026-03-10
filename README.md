@@ -8,12 +8,12 @@ This project was built to practice backend development for manufacturing-style d
 
 ## Features
 
-- Create production records
-- View all production records
-- View a single record by part ID
-- Delete a record by part ID
-- MongoDB Atlas cloud database connection
-- FastAPI Swagger docs for testing endpoints
+- ✅ Create production records
+- ✅ View all production records
+- ✅ View a single record by part ID
+- ✅ Delete a record by part ID
+- ✅ MongoDB Atlas cloud database connection
+- ✅ FastAPI Swagger docs for testing endpoints
 
 ## Tech Stack
 
