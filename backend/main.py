@@ -15,7 +15,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 @app.get("/")
 def read_root():
     return {"message": "Production Tracker API is running"}
@@ -27,6 +26,21 @@ def get_records():
         record["_id"] = str(record["_id"])
         records.append(record)
     return records
+
+@app.get("/records/{part_id}")
+def get_record_by_part_id(part_id: str):
+    record = collection.find_one({"part_id": part_id})
+    if not record:
+        return {"message": "Record not found"}
+    record["_id"] = str(record["_id"])
+    return record
+
+@app.delete("/records/{part_id}")
+def delete_record(part_id: str):
+    result = collection.delete_one({"part_id": part_id})
+    if result.deleted_count == 0:
+        return {"message": "Record not found"}
+    return {"message": f"Record with part_id {part_id} deleted successfully"}
 
 @app.post("/records/")
 def create_record(record: ProductionRecord):
